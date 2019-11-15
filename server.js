@@ -1,21 +1,23 @@
 var http = require("http");
 var fs = require("fs");
-const express = require("express");
-const app = express()
+var express = require("express");
+var app = express();
 
-// Set port to 8080
-var port = 8080;
+// Set port to 3000
+var PORT = process.env.PORT || 3000;
 
 // Create server
 var server = http.createServer(handleRequest);
 
-server.listen(port, function () {
-    console.log("Port listening on PORT: " + port);
+server.listen(PORT, function () {
+    console.log("Port listening on PORT: " + PORT);
 })
 
 function handleRequest(req, res) {
     var path = req.url;
     switch (path) {
+        case "/results":
+            return resultsPage(path, req, res);
         case "/survey":
             return surveyPage(path, req, res);
         default:
@@ -31,6 +33,10 @@ function surveyPage(path, req, res) {
     readFile(__dirname + "/app/public/survey.html", res);
 }
 
+function resultsPage(path, req, res) {
+    readFile(__dirname + "/app/public/results.html", res);
+}
+
 function readFile(pathName, res) {
     fs.readFile(pathName, function (err, data) {
         if (err) {
@@ -44,6 +50,9 @@ function readFile(pathName, res) {
 }
 
 
+app.get("/", function (req, res) {
+    res.json(path.join(__dirname, "/app/public/home.html"));
+});
 
 
 
