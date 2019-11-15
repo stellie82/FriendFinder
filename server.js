@@ -27,7 +27,7 @@ function welcomePage(path, req, res) {
     readFile(__dirname + "/app/public/home.html", res);
 }
 
-function welcomePage(path, req, res) {
+function surveyPage(path, req, res) {
     readFile(__dirname + "/app/public/survey.html", res);
 }
 
