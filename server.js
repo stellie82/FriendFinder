@@ -1,72 +1,56 @@
-var http = require("http");
-var fs = require("fs");
+// Required files
 var express = require("express");
-var app = express();
+var path = require("path");
+var fs = require("fs");
 
-// Set port to 3000
+// Set up Express app
+var app = express();
 var PORT = process.env.PORT || 3000;
 
-// Create server
-var server = http.createServer(handleRequest);
+// Set up Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-server.listen(PORT, function () {
-    console.log("Port listening on PORT: " + PORT);
-})
 
-function handleRequest(req, res) {
-    var path = req.url;
-    switch (path) {
-        case "/results":
-            return resultsPage(path, req, res);
-        case "/survey":
-            return surveyPage(path, req, res);
-        default:
-            return welcomePage(path, req, res);
+
+var friends = [
+    {
+        "name": "dog",
+        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    },
+    {
+        "name": "cat",
+        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
     }
-}
+]
 
-function welcomePage(path, req, res) {
-    readFile(__dirname + "/app/public/home.html", res);
-}
+var questions = [
+    { "question": "question1" },
+    { "question": "question2" },
+    { "question": "question3" }
+]
 
-function surveyPage(path, req, res) {
-    readFile(__dirname + "/app/public/survey.html", res);
-}
-
-function resultsPage(path, req, res) {
-    readFile(__dirname + "/app/public/results.html", res);
-}
-
-function readFile(pathName, res) {
-    fs.readFile(pathName, function (err, data) {
-        if (err) {
-            res.writeHead(500, { "Content-Type": "text/html" });
-            res.end("<html><head><title>Error</title></head><body><h1>There was an error!</h1></html>");
-        } else {
-            res.writeHead(200, { "Content-Type": "text/html" });
-            res.end(data);
-        }
-    });
-}
-
-
+// ROUTES
+// Route to the homepage
 app.get("/", function (req, res) {
-    res.json(path.join(__dirname, "/app/public/home.html"));
+    res.sendFile(path.join(__dirname, "/app/public/home.html"));
+});
+
+app.get("/survey", function (req, res) {
+    res.sendFile(path.join(__dirname, "/app/public/survey.html"));
+});
+
+app.get("/api/friends", function (req, res) {
+    return res.json(friends);
+});
+
+app.get("/api/questions", function (req, res) {
+    return res.json(questions);
 });
 
 
-
-
-
-
-// Starts our server
-// server.listen(PORT, function() {
-//   console.log("Server is listening on PORT: " + PORT);
-// });
-
-// app.get('/', function (req, res) {
-//   res.send('Hello World')
-// })
-
-// app.listen(3000)
-
+app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
+});
