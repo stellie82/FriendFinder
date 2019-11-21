@@ -11,6 +11,6 @@ var questions = [
     {"question": "question10"}
 ]
 
-// module.exports = {
-//     questions: questions
-// };
+module.exports = {
+    questions: questions
+};

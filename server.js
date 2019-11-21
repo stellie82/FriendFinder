@@ -2,6 +2,8 @@
 var express = require("express");
 var path = require("path");
 var fs = require("fs");
+var questionList = require("./app/data/questions.js");
+var friendsList = require("./app/data/friends.js");
 
 // Set up Express app
 var app = express();
@@ -10,27 +12,6 @@ var PORT = process.env.PORT || 3000;
 // Set up Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
-
-var friends = [
-    {
-        "name": "dog",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
-    },
-    {
-        "name": "cat",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
-    }
-]
-
-var questions = [
-    { "question": "question1" },
-    { "question": "question2" },
-    { "question": "question3" }
-]
 
 // ROUTES
 // Route to the homepage
@@ -43,11 +24,11 @@ app.get("/survey", function (req, res) {
 });
 
 app.get("/api/friends", function (req, res) {
-    return res.json(friends);
+    return res.json(friendsList);
 });
 
 app.get("/api/questions", function (req, res) {
-    return res.json(questions);
+    return res.json(questionList);
 });
 
 
