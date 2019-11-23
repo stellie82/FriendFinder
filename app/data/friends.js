@@ -1,31 +1,45 @@
+// Create an array of companions to compare user results to
 var friends = [
     {
-        "name": "dog",
+        "name": "A Man's Best Friend",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
         "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
     },
     {
-        "name": "cat",
+        "name": "Cool Cat",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
         "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
     },
     {
-        "name": "llama",
+        "name": "Llama Drama",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
         "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
     },
     {
-        "name": "unicorn",
+        "name": "Kickback Sloth",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
         "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
     },
     {
-        "name": "rabbit",
+        "name": "Busy Rabbit",
+        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    },
+    {
+        "name": "Curious Monkey",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
         "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
     }
 ]
 
+// Export friends array for use
 module.exports = {
     friends: friends
 };
+
+// classic dog
+// cool cat
+// llama drama
+// lazy sloth
+// busy rabbit
+// curious monkey

@@ -5,7 +5,7 @@
 
 var path = require("path");
 
-console.log("htmlRoutes connected");
+console.log("HTML routes connected");
 
 function htmlRoutes(app) {
     // Route to the homepage
