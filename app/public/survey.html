@@ -59,6 +59,27 @@
   </ul>
 </footer>
 
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
@@ -89,31 +110,21 @@
 
   // After survey has been filled out, calculate results
   $("#complete").on("click", questionsComplete);
-  // var scoresArray = [];
-  var allAnswered = false;
 
   function questionsComplete() {
+    var scoresArray = [];
+    var unanswered = [];
     $(".choices").each(function () {
       if (!$(this).val()) {
         alert("Please fill out all answers before submitting.");
-        allAnswered = false;
+        unanswered.push($(this).val());
         return false;
-      } else {
-        allAnswered = true;
-        userData();
+      } else if ($(this).val()) {
+        scoresArray.push(parseInt($(this).val()));
       }
     })
-  }
 
-  function userData() {
-    if (allAnswered === true) {
-      var scoresArray = [];
-      $(".choices").each(function () {
-        scoresArray.push(parseInt($(this).val()));
-      })
-
-      console.log(scoresArray);
-
+    if (unanswered.length === 0) {
       var userStats = {
         name: $("#name").val(),
         photo: $("#email").val(),
@@ -125,7 +136,6 @@
       });
     }
   }
-
 
 </script>
 
