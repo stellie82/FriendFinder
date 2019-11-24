@@ -30,6 +30,14 @@
       display: inline;
       list-style-type: none;
     }
+
+    .modal {
+      text-align: center;
+    }
+
+    .modal-body {
+      font-size: 22px;
+    }
   </style>
 </head>
 
@@ -43,12 +51,14 @@
       <input type="text" class="form-control" id="name" placeholder="John Smith">
     </div>
     <div class="form-group">
-      <label for="photolink">Link to Photo Image (Required)</label>
+      <label for="photolink">Link to Photo Image</label>
       <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="abc@example.com">
     </div>
 
+    <!-- Create a div to hold survey questions and options -->
     <div class="content"></div>
 
+    <!-- Create a modal to show user results -->
     <div class="modal" tabindex="-1" role="dialog" id="modalBox">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,7 +69,7 @@
             </button>
           </div>
           <div class="modal-body" id="winner"></div>
-          <div id="winnerImage" src="https://icatcare.org/app/uploads/2018/06/Layer-1704-1920x840.jpg"></div>
+          <img id="winnerImage">
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
@@ -71,11 +81,12 @@
 
     <div class="container">
       <ul>
-        <li><a href="/api/friends" id="friends">API Friends List</a></li>
+        <li><a href="/api/friends" id="friends">API Companions List</a></li>
         <li><a href="https://github.com/stellie82/FriendFinder.git" id="repo" target="blank">Github Repo</a></li>
       </ul>
     </div>
   </div>
+
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
@@ -87,11 +98,12 @@
     crossorigin="anonymous"></script>
 
   <script type="text/javascript">
+    // Create a script to populate questions and options to find companion match
     $.get("/api/questions", function (data) {
       console.log(data);
       for (i = 0; i < data.length; i++) {
         $(".content").append("<div class='row'>" + "<div class='form-group col-md-4'>" +
-          "<h3>Question " + (i + 1) + "</h3>" +
+          "<h4>" + data[i].question + "</h4>" +
           "<label for='inputState'>" + "</label>" +
           "<select id='inputState' class='form-control choices'>" +
           "<option disabled selected>" + "Select an Option" + "</option>" +
@@ -128,17 +140,17 @@
           scores: scoresArray
         };
 
+        // Post results to server
         $.post("/api/friends", userStats).then(function (results) {
           console.log("User data: ", results);
           $("#winner").text(results.name);
           let winnerImage = results.photo;
           console.log(results.photo);
-          // $("#winnerImage").attr("src", winnerImage);
+          $("#winnerImage").attr("src", winnerImage);
           $("#modalBox").modal("toggle");
         });
       }
     }
-
   </script>
 
 </body>

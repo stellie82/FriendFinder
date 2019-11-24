@@ -1,12 +1,6 @@
-// Your htmlRoutes.js file should include two routes:
-
-// A GET Route to /survey which should display the survey page.
-// A default, catch-all route that leads to home.html which displays the home page.
-
 var path = require("path");
 
-console.log("HTML routes connected");
-
+// Create a function to setup HTML routes
 function htmlRoutes(app) {
     // Route to the homepage
     app.get("/", function (req, res) {

@@ -1,29 +1,24 @@
-// Your apiRoutes.js file should contain two routes:
-
-// A GET route with the url /api/friends. This will be used to display a JSON of all possible friends.
-// A POST routes /api/friends. This will be used to handle incoming survey results. This route will also be used to handle the compatibility logic.
-
 var path = require("path");
 
 // Required files for data
 var friendsList = require("../data/friends.js");
 var questionList = require("../data/questions.js");
 
-console.log("API routes connected");
-
+// Create a function to setup API routes
 function apiRoutes(app) {
-    // Route to the possible list friends
+    // Route to the possible list of companions
     app.get("/api/friends", function (req, res) {
         return res.json(friendsList);
     });
 
+    // Route to post results of user data and matched companion
     app.post("/api/friends", function (req, res) {
         // var userStats = req.body;
         var userScores = req.body.scores;
         var diffArray = [];
         var match = 0;
-
-        console.log(userScores);
+        
+        // Create a loop to find the difference in scores between user and companion list
         for (i = 0; i < friendsList.friends.length; i++) {
             var difference = 0;
             for (j = 0; j < friendsList.friends[i].scores.length; j++) {
@@ -31,7 +26,6 @@ function apiRoutes(app) {
             }
             diffArray.push(difference);
         };
-        console.log(diffArray);
 
         for (k = 1; k < diffArray.length; k++) {
             if (diffArray[k] < diffArray[match]) {
@@ -39,6 +33,7 @@ function apiRoutes(app) {
             }
         }
 
+        // Send results
         res.send(friendsList.friends[match]);
         console.log("Your match is: " + friendsList.friends[match].name);
     });
