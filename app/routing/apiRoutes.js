@@ -18,8 +18,11 @@ function apiRoutes(app) {
     });
 
     app.post("/api/friends", function (req, res) {
-        var userStats = req.body;
-        var userScores = (req.body.scores);
+        // var userStats = req.body;
+        var userScores = req.body.scores;
+        var diffArray = [];
+        var match = 0;
+
         console.log(userScores);
         for (i = 0; i < friendsList.friends.length; i++) {
             var difference = 0;
@@ -27,7 +30,16 @@ function apiRoutes(app) {
                 difference += Math.abs(friendsList.friends[i].scores[j] - userScores[j]);
             }
             console.log(difference);
+            diffArray.push(difference);
         };
+        console.log(diffArray);
+
+        for (k = 1; k < diffArray.length; k++) {
+            if (diffArray[k] < diffArray[match]) {
+                match = k;
+            }
+        }
+        console.log("Your match is: " + friendsList.friends[match].name);
     });
 
     // Route to the questions for the survey
