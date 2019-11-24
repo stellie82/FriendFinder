@@ -29,7 +29,6 @@ function apiRoutes(app) {
             for (j = 0; j < friendsList.friends[i].scores.length; j++) {
                 difference += Math.abs(friendsList.friends[i].scores[j] - userScores[j]);
             }
-            console.log(difference);
             diffArray.push(difference);
         };
         console.log(diffArray);
@@ -39,6 +38,8 @@ function apiRoutes(app) {
                 match = k;
             }
         }
+
+        res.send(friendsList.friends[match]);
         console.log("Your match is: " + friendsList.friends[match].name);
     });
 

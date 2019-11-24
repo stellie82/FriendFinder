@@ -2,12 +2,12 @@
 var friends = [
     {
         "name": "A",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo": "https://icatcare.org/app/uploads/2018/06/Layer-1704-1920x840.jpg",
         "scores": [5, 4, 2]
     },
     {
         "name": "B",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo": "https://icatcare.org/app/uploads/2018/06/Layer-1704-1920x840.jpg",
         "scores": [1, 3, 2]
     }
     // {
