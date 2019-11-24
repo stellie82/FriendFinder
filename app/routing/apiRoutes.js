@@ -17,10 +17,19 @@ function apiRoutes(app) {
         return res.json(friendsList);
     });
 
-    app.post("/api/friends", function(req, res) {
-        // console.log(req.body);
-        res.send(req.body);
+    app.post("/api/friends", function (req, res) {
+        var userStats = req.body;
+        var userScores = (req.body.scores);
+        console.log(userScores);
+        for (i = 0; i < friendsList.friends.length; i++) {
+            var difference = 0;
+            for (j = 0; j < friendsList.friends[i].scores.length; j++) {
+                difference += Math.abs(friendsList.friends[i].scores[j] - userScores[j]);
+            }
+            console.log(difference);
+        };
     });
+
     // Route to the questions for the survey
     app.get("/api/questions", function (req, res) {
         return res.json(questionList.questions);

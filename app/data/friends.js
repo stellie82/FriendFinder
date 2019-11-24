@@ -1,35 +1,45 @@
 // Create an array of companions to compare user results to
 var friends = [
     {
-        "name": "A Man's Best Friend",
+        "name": "A",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+        "scores": [5, 4, 2]
     },
     {
-        "name": "Cool Cat",
+        "name": "B",
         "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
-    },
-    {
-        "name": "Llama Drama",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
-    },
-    {
-        "name": "Kickback Sloth",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
-    },
-    {
-        "name": "Busy Rabbit",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
-    },
-    {
-        "name": "Curious Monkey",
-        "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-        "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+        "scores": [1, 3, 2]
     }
+    // {
+    //     "name": "A Man's Best Friend",
+    //     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    //     "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    // },
+    // {
+    //     "name": "Cool Cat",
+    //     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    //     "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    // },
+    // {
+    //     "name": "Llama Drama",
+    //     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    //     "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    // },
+    // {
+    //     "name": "Kickback Sloth",
+    //     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    //     "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    // },
+    // {
+    //     "name": "Busy Rabbit",
+    //     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    //     "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    // },
+    // {
+    //     "name": "Curious Monkey",
+    //     "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    //     "scores": [5, 4, 2, 2, 3, 1, 4, 5, 2, 1]
+    // }
 ]
 
 // Export friends array for use
